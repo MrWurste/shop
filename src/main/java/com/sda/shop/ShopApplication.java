@@ -2,8 +2,10 @@ package com.sda.shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.sda.shop")
 public class ShopApplication {
 
 	public static void main(String[] args) {

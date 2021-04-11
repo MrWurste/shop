@@ -1,19 +1,19 @@
 package com.sda.shop;
 
 public class Product {
-    public static long ID_GENERATOR = 0;
+//    public static long ID_GENERATOR = 0;
     private long id;
     private String name;
     private String description;
     private String image;
-    private int price;
+    private double price;
 
     public Product() {
-        this.id = ID_GENERATOR++;
+//        this.id = ID_GENERATOR++;
     }
 
     public Product(String name, String description, String image, int price) {
-        this.id = ID_GENERATOR++;
+//        this.id = ID_GENERATOR++;
         this.name = name;
         this.description = description;
         this.image = image;
@@ -36,7 +36,7 @@ public class Product {
         return image;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -56,7 +56,7 @@ public class Product {
         this.image = image;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

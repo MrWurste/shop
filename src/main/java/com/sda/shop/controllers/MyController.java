@@ -2,6 +2,7 @@ package com.sda.shop.controllers;
 
 import com.sda.shop.CartItem;
 import com.sda.shop.Product;
+import com.sda.shop.services.ProductServise;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +12,14 @@ import java.util.List;
 
 @Controller
 public class MyController {
-    private List<Product> listOfProducts = new ArrayList<>();
+    //private List<Product> listOfProducts = new ArrayList<>();
+    private ProductServise productServise;
     Product current;
     int mygold = 5;
 
+    public MyController(ProductServise productServise) {
+        this.productServise=productServise;
+    }
     @GetMapping("/knight")
     public String getKnightData(Model model) {
         if (null == current) {
@@ -49,21 +54,7 @@ public class MyController {
     }
 
     public List<Product> productsList() {
-        if (listOfProducts.isEmpty()) {
-            Product product1 = new Product("nóż do masła",
-                    "Prosty tępy nóż do masła, skoro widelcem można zabić smoka, to nożem do masła można zrobić jeszcze więcej.",
-                    "ButterKnife.png", 5);
-            Product product2 = new Product("miecz",
-                    "Pierwsza normalna broń, szybka, ostra i skuteczna.",
-                    "Sword.png", 60);
-            Product product3 = new Product("topór",
-                    "No i to jest coś! Tons of damage! No tylko wolniej się macha...",
-                    "Axe.png", 120);
-            listOfProducts.add(product1);
-            listOfProducts.add(product2);
-            listOfProducts.add(product3);
-        }
-        return listOfProducts;
+        return productServise.getAllProducts();
     }
 
     @GetMapping("/newproduct")
@@ -75,12 +66,21 @@ public class MyController {
     @PostMapping("/newproduct")
     public String adminAddProduct(@ModelAttribute Product product, Model model) {
         model.addAttribute("product", product);
-        product.setId(Product.ID_GENERATOR++);
-        productsList().add(product);
+//        product.setId(Product.ID_GENERATOR++);
+        productServise.addProduct(product);
         return "redirect:/products";
     }
 
-    public Product setCurrent() {
-        return null;
+    @GetMapping("/removeproduct")
+    public String OpenremoveProductForm (Model model) {
+        model.addAttribute("product", new Product());
+        return "removeProduct";
+    }
+
+    @PostMapping("/removeproduct")
+    public String removeProduct (@ModelAttribute Product product, Model model) {
+        model.addAttribute("product", product);
+        productServise.removeProductByID(product);
+        return "redirect:/products";
     }
 }
