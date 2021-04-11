@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8">
-    <title>Fragments</title>
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body>
 <header th:fragment="menu">
-    <nav class="menu__section">
+    <nav>
         <ul>
             <li>
                 <a href="/#">Homepage</a>

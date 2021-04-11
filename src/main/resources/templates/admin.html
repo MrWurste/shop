@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="fragments::head">
     <meta charset="UTF-8">
     <title>Nowy produkt</title>
-    <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body>
-<div th:replace="fragments :: menu"/>
+<header th:replace="fragments :: menu"/>
 <div>
     <div>Dodanie nowego produktu</div>
     <form class="container" th:action="@{/admin}" method="post"

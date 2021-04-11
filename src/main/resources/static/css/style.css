@@ -13,7 +13,27 @@ form {
     padding: 10px;
     box-sizing: border-box;
 }
-.menu__section {
-display:flex;
-flex-direction: list;
+header > nav > ul {
+    background-color: rgb(94, 50, 94);
+    display: flex;
+    list-style: none;
+}
+header > nav > uL > li{
+    align-content: center;
+    margin: auto;
+    width: -95%;
+    padding: 5px;
+}
+header > nav > ul > li > a {
+        text-decoration: none;
+        color: crimson;
+        font-size: 20px;
+        text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+header > nav > ul > li > a:hover {
+    color: rgb(255, 42, 84);
 }
