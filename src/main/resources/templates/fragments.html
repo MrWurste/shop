@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+<header th:fragment="menu">
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Homepage</a>
+            </li>
+            <li>
+                <a href="/products">Produkty</a>
+            </li>
+            <li>
+                <a href="/knight">Rycerz</a>
+            </li>
+            <li>
+                <a href="/cart">Koszyk</a>
+            </li>
+            <li>
+                <a href="/admin">Admin</a>
+            </li>
+            <!-- <li>
+                <a href="/html5/spin.html">Spin that</a>
+            </li>
+            <li>
+                <a href="/html5/cat.html">Catty</a>
+            </li> -->
+        </ul>
+    </nav>
+</header>
+</body>
+</html>

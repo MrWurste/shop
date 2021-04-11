@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<tbody>
+<header th:replace="fragments::menu"></header>
+<div>Twoje złoto: </div>
+<div th:text="${goldInPoach}"/>
+<tr th:each="product:${productsList}">
+    <!--<button kup/>-->
+    <div>item:
+        <!--<a th:href="@{/products/product/{id} (id=${product.id})}" th:text="${product.name}" target="_parent"><button kup/> Zobacz szczegóły</a>-->
+    </div>
+    <td th:text="${product.name}"/>
+    <div>cena:
+    <td th:text="${product.price}"/>
+    </div>
+    <a th:href="@{/products/product/{id} (id=${product.id})}" target="_parent"><button kup> Zobacz szczegóły</button></a>
+    <!--<form action="#" th:action="@{/products/product/{id} (id=${product.id})}" method="post">
+        <input type="submit" value="zobacz szczegóły" />
+    </form>-->
+</tr>
+</tbody>
+</html>

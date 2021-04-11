@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product details</title>
+</head>
+<body>
+<header th:replace="fragments::menu"></header>
+<div>Twoje złoto:</div>
+<div th:text="${goldInPoach}"/>
+<div> opis produktu</div>
+<div th:text="${product.name}"/>
+<div th:text="${product.description}"/>
+<img th:src="@{/images/{image} (image=${product.image})}"/>
+<div th:text="${product.price}"/>
+<form class="container" th:action="@{/cart/add}" method="post"
+      th:object="${CartItem}">
+    <label>Ilość: </label>
+    <input id="quantity" type="number" th:field="*{productQuantity}"/>
+    <input id="productName" type="hidden" th:field="*{productName}"/>
+    <input id="productId" type="hidden" th:field="*{productId}"/>
+    <input type="submit" value="Dodaj do koszyka"/>
+</form>
+</body>
+</html>
