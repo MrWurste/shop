@@ -69,7 +69,7 @@ public class MyController {
     @GetMapping("admin")
     public String adminOpenAddProductForm(Model model) {
         model.addAttribute("product", new Product());
-        return "admin";
+        return "oadmin";
     }
 
     @PostMapping("admin")
