@@ -34,18 +34,17 @@ public class MyController {
 
     @GetMapping("products/product/{id}")
     public String getProductDetailsByID(Model model, @PathVariable String id) {
-        Product product = null;
-        CartItem cartItem = null;
         int iid = Integer.parseInt(id);
         for (Product p : productsList()) {
             if (iid == p.getId()) {
-                product = p;
-                break;
+                model.addAttribute("product", p);
+                CartItem ci = new CartItem();
+                ci.setProductName(p.getName());
+                ci.setProductId(p.getId());
+                model.addAttribute("CartItem", ci);
             }
         }
         model.addAttribute("goldInPoach", mygold);
-        model.addAttribute("product", product);
-        model.addAttribute("CartItem", cartItem);
         return "product";
     }
 

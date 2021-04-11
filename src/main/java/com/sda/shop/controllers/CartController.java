@@ -18,17 +18,18 @@ public class CartController {
 
     public CartController() {
         items = new ArrayList<>();
-        items.add(new CartItem("1", "Wodka", "5"));
+        items.add(new CartItem(1l, "Wodka", "5"));
     }
 
     @GetMapping("/list")
     public String getCartItems(Model model) {
+        CartItem cartItem = null;
         model.addAttribute("allItems", items);
         return "cart";
     }
 
     @PostMapping("/add")
     public String addProductToCart(CartItem cartItem) {
-        return "redirect:/products/" + cartItem.getProductId();
+        return "redirect:/products/product/" + cartItem.getProductId();
     }
 }

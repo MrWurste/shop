@@ -2,24 +2,24 @@ package com.sda.shop;
 
 public class CartItem {
 
-    private String productId;
+    private Long productId;
     private String productName;
     private String productQuantity;
 
     public CartItem() {
     }
 
-    public CartItem(String productId, String productName, String productQuantity) {
+    public CartItem(Long productId, String productName, String productQuantity) {
         this.productId = productId;
         this.productName = productName;
         this.productQuantity = productQuantity;
     }
 
-    public String getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
