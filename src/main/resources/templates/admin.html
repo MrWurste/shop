@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments::head">
-    <meta charset="UTF-8">
-    <title>Nowy produkt</title>
+<head>
+    <div th:include="fragments::head_part"/>
+    <title>Admin</title>
 </head>
 <body>
-<header th:replace="fragments :: menu"/>
-<div>
-    <div>Dodanie nowego produktu</div>
-    <form class="container" th:action="@{/admin}" method="post"
-          th:object="${product}">
-        <!--        <div>
-                    <label>ID:</label>
-                    <input id="fId" type="text" th:field="*{id}"/>
-                </div>-->
-        <div>
-            <label>Name:</label>
-            <input id="lName" type="text" th:field="*{name}"/>
-        </div>
-        <div>
-            <label>Description:</label>
-            <input id="lDescription" type="text" th:field="*{description}"/>
-        </div>
-        <div>
-            <label>Image:</label>
-            <input id="lImage" type="text" th:field="*{image}"/>
-        </div>
-        <div>
-            <label>Price:</label>
-            <input id="lPrice" type="text" th:field="*{price}"/>
-        </div>
-        <input type="submit"/>
-    </form></div>
+<header th:replace="fragments::menu"></header>
+<form class="container" th:action="@{/newproduct}" method="post" th:object="${product}">
+    <div>
+        <label>Nazwa: </label>
+        <input type="text" id="productName" th:field="*{name}"/>
+    </div>
+    <div>
+        <label>Opis:</label>
+        <textarea id="productDescription" cols="40" rows="5" placeholder="Dodaj opis"
+                  th:field="*{description}"/>
+    </div>
+    <div>
+        <label>Obraz:</label>
+        <input type="text" id="productImage" th:field="*{image}"/>
+    </div>
+    <div>
+        <label>Cena:</label>
+        <input type="number" id="productPrice" th:field="*{price}"/>
+    </div>
+    <div>
+        <input type="submit" value="Dodaj produkt"/>
+    </div>
+</form>
 </body>
 </html>

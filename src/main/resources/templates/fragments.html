@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
+<head>
+    <div th:fragment="head_part">
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    </div>
 </head>
 <body>
 <header th:fragment="menu">
@@ -22,14 +24,8 @@
                 <a href="/cart/list">Koszyk</a>
             </li>
             <li>
-                <a href="/admin">Admin</a>
+                <a href="/newproduct">Nowy produkt</a>
             </li>
-            <!-- <li>
-                <a href="/html5/spin.html">Spin that</a>
-            </li>
-            <li>
-                <a href="/html5/cat.html">Catty</a>
-            </li> -->
         </ul>
     </nav>
 </header>

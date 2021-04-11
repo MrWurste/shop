@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 public class MyController {
-    List<Product> listOfProducts = new ArrayList<>();
+    private List<Product> listOfProducts = new ArrayList<>();
     Product current;
     int mygold = 5;
 
@@ -32,7 +32,7 @@ public class MyController {
         return "products";
     }
 
-    @GetMapping("products/product/{id}")
+    @GetMapping("/products/product/{id}")
     public String getProductDetailsByID(Model model, @PathVariable String id) {
         int iid = Integer.parseInt(id);
         for (Product p : productsList()) {
@@ -66,17 +66,18 @@ public class MyController {
         return listOfProducts;
     }
 
-    @GetMapping("admin")
+    @GetMapping("/newproduct")
     public String adminOpenAddProductForm(Model model) {
         model.addAttribute("product", new Product());
-        return "oadmin";
+        return "admin";
     }
 
-    @PostMapping("admin")
-    public String adminAddProduct(Product product) {
+    @PostMapping("/newproduct")
+    public String adminAddProduct(@ModelAttribute Product product, Model model) {
+        model.addAttribute("product", product);
         product.setId(Product.ID_GENERATOR++);
-        listOfProducts.add(product);
-        return "redirect:/products/";
+        productsList().add(product);
+        return "redirect:/products";
     }
 
     public Product setCurrent() {

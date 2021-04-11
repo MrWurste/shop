@@ -30,6 +30,7 @@ public class CartController {
 
     @PostMapping("/add")
     public String addProductToCart(CartItem cartItem) {
+        items.add(cartItem);
         return "redirect:/products/product/" + cartItem.getProductId();
     }
 }

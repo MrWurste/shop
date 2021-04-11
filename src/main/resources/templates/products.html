@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head  th:include="fragments::head">
+<head>
+    <div th:include="fragments::head_part"/>
     <title>Products</title>
 </head>
 <tbody>
@@ -8,18 +9,11 @@
 <div>Twoje złoto: </div>
 <div th:text="${goldInPoach}"/>
 <tr th:each="product:${productsList}">
-    <!--<button kup/>-->
-    <div>item:
-        <!--<a th:href="@{/products/product/{id} (id=${product.id})}" th:text="${product.name}" target="_parent"><button kup/> Zobacz szczegóły</a>-->
-    </div>
+    <div>item:</div>
     <td th:text="${product.name}"/>
-    <div>cena:
+    <div>cena:</div>
     <td th:text="${product.price}"/>
-    </div>
     <a th:href="@{/products/product/{id} (id=${product.id})}" target="_parent"><button kup> Zobacz szczegóły</button></a>
-    <!--<form action="#" th:action="@{/products/product/{id} (id=${product.id})}" method="post">
-        <input type="submit" value="zobacz szczegóły" />
-    </form>-->
 </tr>
 </tbody>
 </html>
