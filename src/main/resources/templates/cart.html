@@ -5,11 +5,11 @@
 </head>
 <body>
 <header th:replace="fragments::menu"></header>
-<div th:each="item : ${allItems}" >
+<article th:each="item : ${allItems}" >
     <div th:text="${item.productName}"/>
     <span>Ilość:</span>
     <div th:text="${item.productQuantity}"/>
     <div>---------------------------</div>
-</div>
+</article>
 </body>
 </html>
