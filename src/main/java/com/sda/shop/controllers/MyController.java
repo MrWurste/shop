@@ -83,4 +83,9 @@ public class MyController {
         productServise.removeProductByID(product);
         return "redirect:/products";
     }
+
+    @GetMapping("/game")
+    public String gameSite() {
+        return "game";
+    }
 }

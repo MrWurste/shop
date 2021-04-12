@@ -18,7 +18,7 @@ header > nav > ul {
     display: flex;
     list-style: none;
 }
-header > nav > uL > li{
+header > nav > ul > li {
     align-content: center;
     margin: auto;
     width: -95%;

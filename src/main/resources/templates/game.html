@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:include="fragments::head_part"/>
+    <title>Unity WebGL Player | Game</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/Unitystyle.css">
+</head>
+<body>
+<header th:replace="fragments::menu"></header>
+<div id="webGLContent">
+    <div id="centered">
+        <div id="unity-container" class="unity-desktop">
+            <canvas id="unity-canvas"></canvas>
+            <div id="unity-loading-bar">
+                <div id="unity-logo"></div>
+                <div id="unity-progress-bar-empty">
+                    <div id="unity-progress-bar-full"></div>
+                </div>
+            </div>
+            <div id="unity-footer">
+                <ul>
+                <li id="unity-webgl-logo"></li>
+                <li id="unity-fullscreen-button"></li>
+                <li id="unity-build-title">2 Days Game Jam Game</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script src="js/GameLauncher.js"/>-->
+<script>
+    var buildUrl = "/games/0/Ataleaboutlivingpileofdirt/Build";
+    var loaderUrl = buildUrl + "/Ataleaboutlivingpileofdirt.loader.js";
+    var config = {
+        dataUrl: buildUrl + "/Ataleaboutlivingpileofdirt.data",
+        frameworkUrl: buildUrl + "/Ataleaboutlivingpileofdirt.framework.js",
+        codeUrl: buildUrl + "/Ataleaboutlivingpileofdirt.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "2 Days Game Jam Game",
+        productVersion: "0.1",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var footer = document.querySelector("#unity-footer");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+        footer.style.width = "960px";
+      }
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+
+
+
+</script>
+</body>
+</html>
