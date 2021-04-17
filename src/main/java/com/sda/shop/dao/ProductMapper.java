@@ -1,6 +1,6 @@
 package com.sda.shop.dao;
 
-import com.sda.shop.Product;
+import com.sda.shop.models.Product;
 
 import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;

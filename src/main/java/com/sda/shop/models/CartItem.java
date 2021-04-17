@@ -1,4 +1,4 @@
-package com.sda.shop;
+package com.sda.shop.models;
 
 public class CartItem {
 

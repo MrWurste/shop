@@ -11,19 +11,19 @@
 <div id="webGLContent">
     <div id="centered">
         <div id="unity-container" class="unity-desktop">
+            <div id="unity-header">
+                <ul>
+                    <li id="unity-webgl-logo"></li>
+                    <li id="unity-fullscreen-button"></li>
+                    <li id="unity-build-title">2 Days Game Jam Game</li>
+                </ul>
+            </div>
             <canvas id="unity-canvas"></canvas>
             <div id="unity-loading-bar">
                 <div id="unity-logo"></div>
                 <div id="unity-progress-bar-empty">
                     <div id="unity-progress-bar-full"></div>
                 </div>
-            </div>
-            <div id="unity-footer">
-                <ul>
-                <li id="unity-webgl-logo"></li>
-                <li id="unity-fullscreen-button"></li>
-                <li id="unity-build-title">2 Days Game Jam Game</li>
-                </ul>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
 
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
-      var footer = document.querySelector("#unity-footer");
+      var header = document.querySelector("#unity-header");
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
@@ -55,7 +55,7 @@
       } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
-        footer.style.width = "960px";
+        header.style.width = "960px";
       }
       loadingBar.style.display = "block";
 
@@ -74,9 +74,6 @@
         });
       };
       document.body.appendChild(script);
-
-
-
 </script>
 </body>
 </html>

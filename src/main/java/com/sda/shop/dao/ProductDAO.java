@@ -1,6 +1,6 @@
 package com.sda.shop.dao;
 
-import com.sda.shop.Product;
+import com.sda.shop.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

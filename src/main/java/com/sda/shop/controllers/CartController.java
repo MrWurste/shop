@@ -1,6 +1,6 @@
 package com.sda.shop.controllers;
 
-import com.sda.shop.CartItem;
+import com.sda.shop.models.CartItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

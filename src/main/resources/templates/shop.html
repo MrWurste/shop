@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:include="fragments::head_part"/>
+    <title>Shop</title>
+</head>
+<body>
+<header th:replace="fragments::menu"></header>
+<div id="leftmenu">
+    <nav>
+        <ul>
+            <li>
+                <a href="/shop/products">Lista produktów</a>
+            </li>
+            <li>
+                <a href="/shop/newproduct">Nowy produkt</a>
+            </li>
+            <li>
+                <a href="/shop/removeproduct">Usuń produkt</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

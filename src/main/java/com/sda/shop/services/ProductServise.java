@@ -1,6 +1,6 @@
 package com.sda.shop.services;
 
-import com.sda.shop.Product;
+import com.sda.shop.models.Product;
 import com.sda.shop.dao.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

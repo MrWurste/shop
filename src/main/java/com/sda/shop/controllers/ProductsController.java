@@ -1,38 +1,30 @@
 package com.sda.shop.controllers;
 
-import com.sda.shop.CartItem;
-import com.sda.shop.Product;
+import com.sda.shop.models.CartProduct;
+import com.sda.shop.models.Product;
 import com.sda.shop.services.ProductServise;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class MyController {
-    //private List<Product> listOfProducts = new ArrayList<>();
+@RequestMapping("/shop")
+public class ProductsController {
+    MainController mainController = new MainController();
     private ProductServise productServise;
-    Product current;
-    int mygold = 5;
 
-    public MyController(ProductServise productServise) {
-        this.productServise=productServise;
-    }
-    @GetMapping("/knight")
-    public String getKnightData(Model model) {
-        if (null == current) {
-            current = productsList().get(0);
-        }
-        model.addAttribute("imie", "Zbyszko");
-        model.addAttribute("bron", current.getName());
-        return "knight_details";
+    public ProductsController(ProductServise productServise) {
+        this.productServise = productServise;
     }
 
+    @GetMapping()
+    public String shop () {
+        return "shop";
+    }
     @GetMapping("/products")
     public String getProducts(Model model) {
-        model.addAttribute("goldInPoach", mygold);
         model.addAttribute("productsList", productsList());
         return "products";
     }
@@ -40,16 +32,15 @@ public class MyController {
     @GetMapping("/products/product/{id}")
     public String getProductDetailsByID(Model model, @PathVariable String id) {
         int iid = Integer.parseInt(id);
-        for (Product p : productsList()) {
-            if (iid == p.getId()) {
-                model.addAttribute("product", p);
-                CartItem ci = new CartItem();
-                ci.setProductName(p.getName());
-                ci.setProductId(p.getId());
-                model.addAttribute("CartItem", ci);
+        for (Product product : productsList()) {
+            if (iid == product.getId()) {
+                model.addAttribute("product", product);
+                CartProduct cp = new CartProduct();
+                cp.setProductName(product.getName());
+                cp.setProductId(product.getId());
+                model.addAttribute("CartProduct", cp);
             }
         }
-        model.addAttribute("goldInPoach", mygold);
         return "product";
     }
 
@@ -60,7 +51,7 @@ public class MyController {
     @GetMapping("/newproduct")
     public String adminOpenAddProductForm(Model model) {
         model.addAttribute("product", new Product());
-        return "admin";
+        return "newproduct";
     }
 
     @PostMapping("/newproduct")
@@ -68,24 +59,19 @@ public class MyController {
         model.addAttribute("product", product);
 //        product.setId(Product.ID_GENERATOR++);
         productServise.addProduct(product);
-        return "redirect:/products";
+        return "redirect:/shop/products";
     }
 
     @GetMapping("/removeproduct")
-    public String OpenremoveProductForm (Model model) {
+    public String OpenremoveProductForm(Model model) {
         model.addAttribute("product", new Product());
-        return "removeProduct";
+        return "removeproduct";
     }
 
     @PostMapping("/removeproduct")
-    public String removeProduct (@ModelAttribute Product product, Model model) {
+    public String removeProduct(@ModelAttribute Product product, Model model) {
         model.addAttribute("product", product);
         productServise.removeProductByID(product);
-        return "redirect:/products";
-    }
-
-    @GetMapping("/game")
-    public String gameSite() {
-        return "game";
+        return "redirect:/shop/products";
     }
 }

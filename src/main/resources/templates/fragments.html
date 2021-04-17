@@ -2,9 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <div th:fragment="head_part">
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet"/>
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet"/>
+        <link th:href="@{/css/reset.css}" rel="stylesheet"/>
+        <link th:href="@{/css/style.css}" rel="stylesheet"/>
     </div>
 </head>
 <body>
@@ -15,19 +16,16 @@
                 <a href="/#">Homepage</a>
             </li>
             <li>
-                <a href="/products">Produkty</a>
-            </li>
-            <li>
-                <a href="/knight">Rycerz</a>
+                <a href="/shop">Produkty</a>
             </li>
             <li>
                 <a href="/cart/list">Koszyk</a>
             </li>
             <li>
-                <a href="/newproduct">Nowy produkt</a>
+                <a href="/knight">Rycerz</a>
             </li>
             <li>
-                <a href="/game">Gra WebGL</a>
+                <a href="/gameswebgl">Gry WebGL</a>
             </li>
         </ul>
     </nav>

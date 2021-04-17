@@ -6,13 +6,15 @@
 </head>
 <body>
 <header th:replace="fragments::menu"></header>
+<div>Twoje złoto:</div>
+<div th:text="${goldInPoach}"/>
 <div> opis produktu</div>
 <div th:text="${product.name}"/>
 <div th:text="${product.description}"/>
 <img th:src="@{/images/{image} (image=${product.image})}"/>
 <div th:text="${product.price}"/>
 <form class="container" th:action="@{/cart/add}" method="post"
-      th:object="${CartProduct}">
+      th:object="${CartItem}">
     <label>Ilość: </label>
     <input id="quantity" type="number" th:field="*{productQuantity}"/>
     <input id="productName" type="hidden" th:field="*{productName}"/>
