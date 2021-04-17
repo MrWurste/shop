@@ -14,15 +14,15 @@ public class ItemDAO {
     JdbcTemplate jdbcTemplate;
 
     public List<Item> getAllItems() {
-        return jdbcTemplate.query("SELECT * FROM Products",
+        return jdbcTemplate.query("SELECT * FROM Items",
                 new ItemMapper());
     }
 
     public void addItem(Item item) {
-        jdbcTemplate.update("INSERT INTO Products (name, description, image, price) VALUES (?,?,?,?)", item.getName(), item.getDescription(), item.getImage(), item.getPrice());
+        jdbcTemplate.update("INSERT INTO Items (name, description, image, price) VALUES (?,?,?,?)", item.getName(), item.getDescription(), item.getImage(), item.getPrice());
     }
 
     public void removeItemByID(Item item) {
-        jdbcTemplate.execute("DELETE FROM Products WHERE id="+item.getId());
+        jdbcTemplate.execute("DELETE FROM Items WHERE id="+item.getId());
     }
 }

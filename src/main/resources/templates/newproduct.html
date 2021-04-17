@@ -6,7 +6,7 @@
 </head>
 <body>
 <header th:replace="fragments::menu"></header>
-<form class="container" th:action="@{/newproduct}" method="post" th:object="${product}">
+<form class="container" th:action="@{newproduct}" method="post" th:object="${product}">
     <div>
         <label>Nazwa: </label>
         <input type="text" id="productName" th:field="*{name}"/>

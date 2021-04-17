@@ -8,12 +8,12 @@
 <header th:replace="fragments::menu"></header>
 <div>Twoje złoto: </div>
 <div th:text="${goldInPoach}"/>
-<tr th:each="product:${productsList}">
+<tr th:each="item:${itemsList}">
     <div>item:</div>
-    <td th:text="${product.name}"/>
+    <td th:text="${item.name}"/>
     <div>cena:</div>
-    <td th:text="${product.price}"/>
-    <a th:href="@{/products/product/{id} (id=${product.id})}" target="_parent"><button kup> Zobacz szczegóły</button></a>
+    <td th:text="${item.price}"/>
+    <a th:href="@{items/item/{id} (id=${item.id})}" target="_parent"><button kup> Zobacz szczegóły</button></a>
 </tr>
 </tbody>
 </html>

@@ -4,7 +4,6 @@ import com.sda.shop.models.CartItem;
 import com.sda.shop.models.Item;
 import com.sda.shop.models.Product;
 import com.sda.shop.services.ItemServise;
-import com.sda.shop.services.ProductServise;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
